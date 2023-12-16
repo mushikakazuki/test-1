@@ -61,11 +61,11 @@ class ProductController extends Controller
             ->with('success', '変更しました');
     }
 
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        DB::beginTransaction();
-
+        // idをGetパラメータから取得
         try {
+            DB::beginTransaction();
             $product = Product::findOrFail($id);
             $product->delete();
 
